@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<h2>Reindeers</h2>
+<table>
+    <tr>
+        @foreach (var dataColumn in ViewBag.ReindeerTable.Columns)
+        {
+            <th>@dataColumn.ColumnName</th>
+        }
+    </tr>
+    @foreach (var reindeerRow in ViewBag.ReindeerTable.Rows)
+    {
+    <tr>
+        @for (int i = 0; i < ViewBag.ReindeerTable.Columns.Count; ++i)
+    {
+        <td>@reindeerRow[i]</td>
+}
+    </tr>
+    }
+</table>
+<br />
+
+<h2>Add new Reindeer</h2>
+<table>
+    <tr>
+        @foreach (var dataColumn in ViewBag.ReindeerTable.Columns)
+        {
+            <th>@dataColumn.ColumnName</th>
+        }
+    </tr>
+    @foreach (var reindeerRow in ViewBag.ReindeerTable.Rows)
+    {
+        <tr>
+            @for (int i = 0; i < ViewBag.ReindeerTable.Columns.Count; ++i)
+            {
+                <td>@reindeerRow[i]</td>
+            }
+        </tr>
+    }
+</table>
+<br />
+ 
+<form method="POST" action="@Url.Action("InsertReindeer", "Reindeer")">
+    <label>Reindeer Number: <input type="text" name="rNr"></label></br>
+    <label>Clan Name: <input type="text" name="rClanName"></label></br>
+    <label>Subspecies: <input type="text" name="rSubSpecies"></label></br>
+    <label>Reindeer Name: <input type="text" name="rName"></label></br>
+    <label>Stink: <input type="text" name="rStink"></label></br>
+    <label>Region: <input type="text" name="rRegion"></label></br>
+    <label>Group Belloning: <input type="text" name="rGroupBellonging"></label></br>
+    <input type="submit" value="Add Reindeer" />
+</form>

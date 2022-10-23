@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+
+
+<h2>Reindeers info</h2>
+<tr class='table-head'>
+    <td>Reindeer Number</td>
+    <td>Reindeer Clan</td>
+    <td>Subspecies</td>
+    <td>Reindeer Name</td>
+    <td> Select </td>";
+</tr>
+
+foreach ($stmt as $key => $row) {
+    <tr class='table-data'>
+    <td> $row['Nr']</td>
+    <td>  $row['ClanName'] . "</td>
+    <td> $row['Subspecies'] . "</td>
+    <td>$row['ReindeerName'] . "</td>
+    <td>
+        <form method='post' action='reindeerpage.php'>
+        </form>
+        <input type='hidden' name='Nr' value=' ' />
+        <input type='submit' class='button' value='X' id='Nr' title='Delete entry' />
+    </td>
+</tr>
+    }
+</table>
