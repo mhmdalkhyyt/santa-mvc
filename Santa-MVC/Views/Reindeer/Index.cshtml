@@ -5,8 +5,8 @@
 @*ssh databaskonstruktion@wwwlab.webug.se -L 3308:127.0.0.1:3306 -N*@
 
 <h2>Reindeers</h2>
-<table>
-    <tr>
+<table style="border: 1px solid;">
+    <tr style="border: 1px solid;">
         @foreach (var dataColumn in ViewBag.ReindeerTable.Columns)
         {
             <th>@dataColumn.ColumnName</th>
@@ -14,21 +14,48 @@
     </tr>
     @foreach (var reindeerRow in ViewBag.ReindeerTable.Rows)
     {
-    <tr>
-        @for (int i = 0; i < ViewBag.ReindeerTable.Columns.Count; ++i)
-    {
-        <td>@reindeerRow[i]</td>
-}
-    </tr>
+        <tr style="border: 1px solid;">
+            @for (int i = 0; i < ViewBag.ReindeerTable.Columns.Count; ++i)
+            {
+                <td>@reindeerRow[i]</td>
+
+            }
+            <form method="POST" action="@Url.Action("RemoveReindeer", "Reindeer")" ;>
+                <td>
+                    <input type="hidden" value="X">
+                    <input type="submit" value="X">
+                </td>
+            </form>
+        </tr>
     }
+
 </table>
 <br />
 
-<h2>Add new Reindeer</h2>
+<button id="btn">Toggle add Reindeer</button>
 
 <br />
- 
-<form method="POST" action="@Url.Action("InsertReindeer", "Reindeer")">
+
+<script>
+    const btn = document.getElementById('btn');
+
+    btn.addEventListener('click' , () => {
+        const form = document.getElementById('addForm');
+
+        if(form.style.display == 'none'){
+            form.style.display = 'block';
+        }
+        else{
+            form.style.display = 'none';
+        }
+    });
+</script>
+
+
+
+<br />
+
+<form style="display:none;" id="addForm" method="POST" action="@Url.Action("InsertReindeer", "Reindeer")">
     <label>Reindeer Number: <input type="text" name="rNr"></label></br>
     <label>Clan Name: <input type="text" name="rClanName"></label></br>
     <label>Subspecies: <input type="text" name="rSubSpecies"></label></br>
@@ -38,3 +65,4 @@
     <label>Group Belloning: <input type="text" name="rGroupBellonging"></label></br>
     <input type="submit" value="Add Reindeer" />
 </form>
+

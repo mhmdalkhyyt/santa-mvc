@@ -54,6 +54,28 @@ namespace Santa_MVC.Models
         }
 
 
+        public void RemoveReindeer(int rNr)
+        {
+            MySqlConnection dbcon = new MySqlConnection(connectionString);
+            dbcon.Open();
+
+            MySqlCommand rmQuery = new("DELETE FROM Reindeer WHERE Nr =@rNR", dbcon);
+            
+            rmQuery.Parameters.AddWithValue("@rNr", rNr);
+            int rows = rmQuery.ExecuteNonQuery();
+
+            dbcon.Close();
+
+        }
+
+        public void SearchReindeer(int rNr)
+        {
+            MySqlConnection dbcon = new MySqlConnection (connectionString);
+            dbcon.Open();
+
+            MySqlCommand sqlQuery = new("SELECT * FROM Reindeer WHERE ");
+        }
+
     }
 }
 

@@ -30,6 +30,12 @@ namespace Santa_MVC.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public IActionResult RemoveReindeer(int rNr)
+        {
+            ReindeerModel reindeerModel = new ReindeerModel(_configuration);
+            return RedirectToAction("Index");
+        }
     }
 }
 
